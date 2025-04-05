@@ -2,7 +2,7 @@ use error::MyError;
 use pgrx::prelude::*;
 use std::time::Duration;
 
-pgrx::pg_module_magic!();
+::pgrx::pg_module_magic!();
 
 pub mod error;
 

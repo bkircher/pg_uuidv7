@@ -4,6 +4,9 @@ This is an experimental Postgres extension to generate v7 UUIDs. Created with
 [pgrx](https://github.com/tcdi/pgrx), it is a thin wrapper around the Rust
 [uuid](https://docs.rs/uuid/latest/uuid/) crate.
 
+This is a fork of
+[github.com/craigpastro/pg_uuidv7](https://github.com/craigpastro/pg_uuidv7).
+
 ## Usage
 
 ```
@@ -11,13 +14,13 @@ postgres=# CREATE EXTENSION pg_uuidv7;
 CREATE EXTENSION
 
 postgres=# SELECT uuid_generate_v7();
-           uuid_generate_v7           
+           uuid_generate_v7
 --------------------------------------
  018c5732-17b3-7451-b61a-223e7ee65241
 (1 row)
 
 postgres=# SELECT uuid_v7_to_timestamptz('018c5732-17b3-7451-b61a-223e7ee65241');
-   uuid_v7_to_timestamptz   
+   uuid_v7_to_timestamptz
 ----------------------------
  2023-12-10 20:45:49.875-08
 (1 row)
@@ -35,18 +38,16 @@ postgres://postgres:password@localhost:28801/postgres
 
 ## Installation
 
-Requires [pgrx](https://github.com/pgcentralfoundation/pgrx). If you have `pgrx` installed then
+Requires [pgrx](https://github.com/pgcentralfoundation/pgrx). If you have `pgrx`
+installed then
 
-```
+```sh
 cargo pgrx run pg16
 ```
 
 should drop you into a psql prompt:
 
 ```
-psql (16.0)
-Type "help" for help.
-
 pg_uuidv7=# CREATE EXTENSION pg_uuidv7;
 CREATE EXTENSION
 ```
@@ -58,7 +59,7 @@ memory.
 
 The benchmark I ran was
 
-```console
+```sh
 $ pgbench -c 8 -j 8 -t 200000 -f ${TEST}.sql
 ```
 
